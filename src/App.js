@@ -1,69 +1,48 @@
+import { useState } from "react";
 import SubjectBox from "./\bcomponents/SubjectBox";
 import ToDoList from "./\bcomponents/ToDoList";
 
-// // 화살표 함수 사용
-// const ToDoList = () => {
-//   return (
-//     <div style={{ border: "1px solid black", width: "200px" }}>
-//       <h1>My Book</h1>
-//       <ul>
-//         <li>Study</li>
-//         <li>Exercise</li>
-//         <li>Read book</li>
-//       </ul>
-//     </div>
-//   );
-// };
-
-// 일반 함수 사용
-// const ToDoList = function () {
-//   return (
-//     <div style={{ border: "1px solid black", width: "200px" }}>
-//       <h1>My Book</h1>
-//       <ul>
-//         <li>Study</li>
-//         <li>Exercise</li>
-//         <li>Read book</li>
-//       </ul>
-//     </div>
-//   );
-// };
-
-// const Book = function () {
-//   return {};
-// };
-
 function App() {
+  const information = {
+    name: "Woohyun",
+    age: 25,
+  };
+
+  const [count, setCount] = useState(0);
+  const [info, setInfo] = useState(information);
+  const clickButton = () => {
+    setCount(count + 1);
+  };
+  const addAge = () => {
+    // 잘못된 방법
+    // setInfo((current) => {
+    //   current.age += 1;
+    //   return current;
+    // });
+
+    // 올바른 방법
+    setInfo((current) => {
+      const newInfo = { ...current };
+      newInfo.age += 1;
+      return newInfo;
+    });
+  };
+
+  console.log("렌더링 되었습니다 !");
+
   return (
-    <div
-      style={{
-        backgroundColor: "#F8F8F8",
-        width: "95vw",
-        height: "100vh",
-        padding: "20px",
-      }}
-    >
-      <h1>2023년 1학기</h1>
-      <SubjectBox
-        subTitle="2023U002001202300"
-        subFirstName="CGEX0017"
-        subName="창업 아이디어 탐색 및 실습"
-        subCode="X586-1"
-        subProfessor="정문호"
-      />
-      <SubjectBox
-        subTitle="2023U00020012023020921"
-        subFirstName="SCE334"
-        subName="정보보호"
-        subCode="F054-1"
-        subProfessor="손태식"
-      />
+    <div>
+      <div>
+        <p>버튼을 {count}번 눌렀습니다.</p>
+        <button onClick={clickButton}>클릭</button>
+
+        <h1>
+          My name is {info.name} and my age is {info.age}
+        </h1>
+        <button onClick={addAge}>나이 먹이기</button>
+      </div>
     </div>
   );
 }
 
 export default App;
-
-{
-  props.number;
-}
