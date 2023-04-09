@@ -1,7 +1,7 @@
 import SubjectBox from "./\bcomponents/SubjectBox";
 import ToDoList from "./\bcomponents/ToDoList";
 
-// 화살표 함수 사용
+// // 화살표 함수 사용
 // const ToDoList = () => {
 //   return (
 //     <div style={{ border: "1px solid black", width: "200px" }}>
@@ -29,9 +29,20 @@ import ToDoList from "./\bcomponents/ToDoList";
 //   );
 // };
 
+// const Book = function () {
+//   return {};
+// };
+
 function App() {
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: "#F8F8F8",
+        width: "95vw",
+        height: "100vh",
+        padding: "20px",
+      }}
+    >
       <h1>2023년 1학기</h1>
       <SubjectBox
         subTitle="2023U002001202300"
@@ -52,3 +63,7 @@ function App() {
 }
 
 export default App;
+
+{
+  props.number;
+}

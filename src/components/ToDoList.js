@@ -1,13 +1,14 @@
 import React from "react";
 
-const ToDoList = () => {
+const ToDoList = (props) => {
   return (
     <div style={{ border: "1px solid black", width: "200px" }}>
-      <h1>My Book</h1>
+      <h1>{props.title}</h1>
       <ul>
-        <li>Study</li>
-        <li>Exercise</li>
-        <li>Read book</li>
+        <li>{props.one}</li>
+        <li>{props.two}</li>
+        <li>{props.three}</li>
+        <li>{props.number}</li>
       </ul>
     </div>
   );
