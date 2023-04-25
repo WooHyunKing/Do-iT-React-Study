@@ -1,46 +1,46 @@
-import { useState } from "react";
-import SubjectBox from "./\bcomponents/SubjectBox";
-import ToDoList from "./\bcomponents/ToDoList";
+import { useEffect, useState } from "react";
+import SubjectBox from "./components/SubjectBox";
+import ToDoList from "./components/ToDoList";
+import Timer from "./components/Timer";
 
 function App() {
-  const information = {
-    name: "Woohyun",
-    age: 25,
-  };
+  const [name, setName] = useState("킹우현");
+  const [age, setAge] = useState(25);
 
-  const [count, setCount] = useState(0);
-  const [info, setInfo] = useState(information);
-  const clickButton = () => {
-    setCount(count + 1);
-  };
-  const addAge = () => {
-    // 잘못된 방법
-    // setInfo((current) => {
-    //   current.age += 1;
-    //   return current;
-    // });
+  const [show, setShow] = useState(false);
 
-    // 올바른 방법
-    setInfo((current) => {
-      const newInfo = { ...current };
-      newInfo.age += 1;
-      return newInfo;
-    });
-  };
+  // 렌더링 될 때마다 실행됨(componentDidMount + 모든 State에 대해 componentDidUpdate)
+  useEffect(() => {
+    console.log("렌더링 🎨");
+  });
 
-  console.log("렌더링 되었습니다 !");
+  // 최초 렌더링(마운트) + age가 변화할 때마다 실행됨(componentDidMount + 특정 값 componentDidUpdate)
+  useEffect(() => {
+    console.log("age 변화 🕓");
+  }, [age]);
+
+  // 최초 렌더링(마운트) + name이 변화할 때마다 실행됨(componentDidMount + 특정 값 componentDidUpdate)
+  useEffect(() => {
+    console.log("name 변화 ✨");
+  }, [name]);
+
+  // 최초 렌더링 시에만 실행됨(componentDidMount)
+  useEffect(() => {
+    console.log("첫 렌더링(Mount) ⭐️");
+  }, []);
 
   return (
-    <div>
-      <div>
-        <p>버튼을 {count}번 눌렀습니다.</p>
-        <button onClick={clickButton}>클릭</button>
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <span>이름 : {name}</span>
+      <span>나이 : {age}</span>
 
-        <h1>
-          My name is {info.name} and my age is {info.age}
-        </h1>
-        <button onClick={addAge}>나이 먹이기</button>
+      <div>
+        <input value={name} onChange={(e) => setName(e.target.value)} />
+        <button onClick={() => setAge((prev) => prev + 1)}>나이 먹이기</button>
       </div>
+
+      {show ? <Timer /> : null}
+      <button onClick={() => setShow(!show)}>타이머 렌더링/제거</button>
     </div>
   );
 }
