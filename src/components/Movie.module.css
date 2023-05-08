@@ -1,0 +1,10 @@
+.MovieCard {
+  width: 150px;
+  height: 312px;
+  margin-right: 10px;
+}
+
+.MovieImage {
+  width: 150px;
+  height: 225px;
+}
