@@ -1,10 +1,27 @@
-.MovieCard {
-  width: 150px;
-  height: 312px;
-  margin-right: 10px;
+.movieWrapper {
+  display: flex;
+  margin-bottom: 20px;
 }
 
-.MovieImage {
+.movieCard {
+  width: 150px;
+  height: 280px;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.movieImage {
   width: 150px;
   height: 225px;
+}
+
+.movieTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.movieOverview {
+  font-size: 15px;
 }
